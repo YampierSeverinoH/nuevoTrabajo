@@ -1,17 +1,22 @@
 package presentacion;
 
+import Datos.ClienteDAO;
 import Datos.SucursalDAO;
 import Datos.TrabajadorDao;
 import Datos.areaTDAO;
 import Datos.personaDAO;
 import Interfaces.ClsAreaT;
+import Interfaces.ClsCliente;
 import Interfaces.ClsPersona;
+import Interfaces.ClsPrestatario;
 import Interfaces.ClsSucursal;
 import Interfaces.ClsTrabajador;
 import Interfaces.ClsareaTipoTrabajador;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class PRO_Trabajador extends javax.swing.JFrame {
@@ -83,7 +88,7 @@ public class PRO_Trabajador extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         cbsucursal = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        txtsueldo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         cbpersona = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -110,9 +115,9 @@ public class PRO_Trabajador extends javax.swing.JFrame {
 
         jLabel3.setText("Sueldo del Trabajador");
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        txtsueldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                txtsueldoActionPerformed(evt);
             }
         });
 
@@ -160,7 +165,7 @@ public class PRO_Trabajador extends javax.swing.JFrame {
                                         .addGap(6, 6, 6)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,15 +208,16 @@ public class PRO_Trabajador extends javax.swing.JFrame {
                         .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 154, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -302,14 +308,47 @@ public class PRO_Trabajador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void limpiarTabla(JTable tab){
+        DefaultTableModel tb = (DefaultTableModel) tab.getModel();
+            int a = tab.getRowCount()-1;
+            for (int i = a; i >= 0; i--) {          
+            tb.removeRow(tb.getRowCount()-1);
 
+    }
+    }
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+
+        ClsTrabajador tra;
+        TrabajadorDao objDAO = new TrabajadorDao();
+
+        if (this.txtsueldo.getText().length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Ingrese datos");
+            return;
+        }
+
+        try {
+
+            ClsPersona per = (ClsPersona) this.cbpersona.getSelectedItem();
+            ClsSucursal sucur = (ClsSucursal) this.cbsucursal.getSelectedItem();
+            tra = new ClsTrabajador(Float.parseFloat(this.txtsueldo.getText()),
+                    per.getIdPersona(), 
+                    sucur.getIdSucursal());
+
+            objDAO.agregarTrabajador(tra);
+            limpiarTabla(tbltrabajador);
+            JOptionPane.showMessageDialog(rootPane, "Trabajador agregado");
+            cargarTrabajador();
+
+        } catch (Exception ex) {
+//throw ex;
+        }
+
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void txtsueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsueldoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_txtsueldoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,7 +416,7 @@ public class PRO_Trabajador extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTable tbltrabajador;
+    private javax.swing.JTextField txtsueldo;
     // End of variables declaration//GEN-END:variables
 }

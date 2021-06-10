@@ -42,7 +42,7 @@ public class PRO_Clientes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         modelo = new DefaultTableModel(null, cabecera);
         this.tblcliente.setModel(modelo);
-        cargarClientes();
+//        cargarClientes();
         cargarPersonas();
         cargarPrestatario();
     }
@@ -307,16 +307,6 @@ public class PRO_Clientes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
-//        PRO_Clientes_A PRO_Clientes_A = null;
-//        try {
-//            PRO_Clientes_A = new PRO_Clientes_A();
-//        } catch (Exception ex) {
-//            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//        PRO_Clientes_A.setVisible(true);
-////        this.dispose();
-//
-//        // TODO add your handling code here:
 
 //Registrar en bd
         ClsCliente cli;
@@ -336,6 +326,9 @@ public class PRO_Clientes extends javax.swing.JFrame {
 
             objDAO.agregarCliente(cli);
             JOptionPane.showMessageDialog(rootPane, "Cliente agregado");
+            
+//            cargarClientes();
+            
         } catch (Exception ex) {
 //
         }

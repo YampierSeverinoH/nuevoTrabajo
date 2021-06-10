@@ -66,7 +66,7 @@ public class ClienteDAO {
             cst.setString(4, cli.getFecha());
 
             cst.execute();
-            Conexion.getConexion();
+            Conexion.getConexion().close();
 
         } catch (Exception ex) {
             throw ex;
