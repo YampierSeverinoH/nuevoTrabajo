@@ -322,7 +322,7 @@ private void limpiarTabla(JTable tab){
         TrabajadorDao objDAO = new TrabajadorDao();
 
         if (this.txtsueldo.getText().length() == 0) {
-            JOptionPane.showMessageDialog(rootPane, "Ingrese datos");
+            JOptionPane.showMessageDialog(rootPane, "DATOS NO INGRESADOS - INGRESE DATOS");
             return;
         }
 
