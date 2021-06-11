@@ -337,7 +337,7 @@ public class PRO_Clientes extends javax.swing.JFrame {
                     this.txtfecha.getText());
 
             objDAO.agregarCliente(cli);
-            JOptionPane.showMessageDialog(rootPane, "Cliente agregado");
+            JOptionPane.showMessageDialog(rootPane, "CLIENTE AGREGADO");
             
 //            cargarClientes();
             
