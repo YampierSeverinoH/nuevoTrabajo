@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class PRO_Clientes extends javax.swing.JFrame {
@@ -45,6 +46,17 @@ public class PRO_Clientes extends javax.swing.JFrame {
 //        cargarClientes();
         cargarPersonas();
         cargarPrestatario();
+        cargarClientes();
+    }
+    
+    private void limpiarTabla(JTable tab){
+        DefaultTableModel tb = (DefaultTableModel) tab.getModel();
+            int a = tab.getRowCount()-1;
+            for (int i = a; i >= 0; i--) {          
+            tb.removeRow(tb.getRowCount()-1);
+
+    }
+    
     }
 
     private void cargarPersonas() throws Exception {
@@ -332,7 +344,9 @@ public class PRO_Clientes extends javax.swing.JFrame {
         } catch (Exception ex) {
 //
         }
-
+ limpiarTabla(tblcliente);
+ cargarClientes();
+ 
 
     }//GEN-LAST:event_btnAgregarActionPerformed
 
@@ -340,6 +354,7 @@ public class PRO_Clientes extends javax.swing.JFrame {
 
         ClienteDAO objDAO = new ClienteDAO();
         ArrayList<ClsCliente> lista;
+         limpiarTabla(tblcliente);
         try {
             lista = objDAO.buscarcliente(idPersona);
             for (ClsCliente obj : lista) {
@@ -348,7 +363,9 @@ public class PRO_Clientes extends javax.swing.JFrame {
                     String.valueOf(obj.getIdPersona()),
                     String.valueOf(obj.isEstado()),
                     obj.getFecha()};
+                
                 modelo.addRow(fila);
+                
 
             }
         } catch (Exception ex) {
