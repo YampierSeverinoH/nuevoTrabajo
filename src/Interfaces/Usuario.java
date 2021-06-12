@@ -7,8 +7,27 @@ public class Usuario {
     private String descripcion ;
     private String pass ;
     private String estado ;
+    private String decEst;
     private String creacion ;
     private String baja ;
+
+    public String getDecEst() {
+        return decEst;
+    }
+
+    public void setDecEst(String decEst) {
+        this.decEst = decEst;
+    }
+
+    public String getPersona() {
+        return persona;
+    }
+
+    public void setPersona(String persona) {
+        this.persona = persona;
+    }
+    
+    private String persona;
     private int idPersona ;
 
     public int getIdUsuario() {
@@ -78,6 +97,12 @@ public class Usuario {
         this.creacion = creacion;
         this.baja = baja;
         this.idPersona = idPersona;
+    }
+
+    public Usuario(int idUsuario, String descripcion, String persona) {
+        this.idUsuario = idUsuario;
+        this.descripcion = descripcion;
+        this.persona = persona;
     }
 
     @Override
