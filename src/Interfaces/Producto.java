@@ -8,10 +8,47 @@ public class Producto {
     private float precio;
     private int stock;
     private String estado;
+    private String decEst;
     private String imgen;
     private int idMarca ;
+    private String marca;
     private int idPresentacion ;
+    private String presentacion;
     private int idEstante;
+    private int idUniMedidas;
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public String getPresentacion() {
+        return presentacion;
+    }
+
+    public void setPresentacion(String presentacion) {
+        this.presentacion = presentacion;
+    }
+    
+    public String getDecEst() {
+        return decEst;
+    }
+
+    public void setDecEst(String decEst) {
+        this.decEst = decEst;
+    }
+
+    public int getIdUniMedidas() {
+        return idUniMedidas;
+    }
+
+    public void setIdUniMedidas(int idUniMedidas) {
+        this.idUniMedidas = idUniMedidas;
+    }
+ 
 
     public int getIdProducto() {
         return idProducto;
@@ -96,18 +133,34 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, String estado, String imgen, int idMarca, int idPresentacion, int idEstante) {
+    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, String estado, String decEst, String imgen, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.precio = precio;
         this.stock = stock;
         this.estado = estado;
+        this.decEst = decEst;
         this.imgen = imgen;
         this.idMarca = idMarca;
         this.idPresentacion = idPresentacion;
         this.idEstante = idEstante;
+        this.idUniMedidas = idUniMedidas;
     }
+
+    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, String marca, String presentacion) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.marca = marca;
+        this.presentacion = presentacion;
+    }
+
+    
+
+   
 
     @Override
     public String toString() {
