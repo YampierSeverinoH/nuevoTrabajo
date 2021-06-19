@@ -9,22 +9,25 @@ import Interfaces.Producto;
 import java.util.ArrayList;
 import Datos.ProductosDAO;
 import Interfaces.VentaProducto;
+import Interfaces.detalleCompra;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author yam_g
  */
 public class SelecionarProductos extends javax.swing.JFrame{
-
-    public int idSel;
+ public static int idEnviar;
+    public int idSel=-1;
     public boolean opc;
     DefaultTableModel modelo;
     String cabecera[] = {"id","NOMBRE", "DESCRIPCION", "PRECIO", "STOCK","MARCA","PRESENTACION" } ;
-    public ArrayList<Producto> listaProd;
+    
     
     public SelecionarProductos() throws Exception {
         initComponents();
@@ -35,17 +38,17 @@ public class SelecionarProductos extends javax.swing.JFrame{
     }
     private void listarProductos() throws Exception{
         ProductosDAO objDAO = new ProductosDAO();
-        ArrayList<VentaProducto> lista;
+        ArrayList<Producto> lista;
         try{
-            lista = objDAO.listaProductosVenta(0);
-            for ( VentaProducto obj : lista ){
-                String fila[] = {String.valueOf(obj.getP().getIdProducto()),
-                                  obj.getP().getNombre(), 
-                                  obj.getP().getDescripcion(), 
-                                  String.valueOf(obj.getP().getPrecio()), 
-                                  String.valueOf(obj.getP().getStock()),  
-                                  obj.getP().getDescripcion(),
-                                  obj.getP().getPresentacion()};
+            lista = objDAO.listaProductosVenta();
+            for ( Producto obj : lista ){
+                String fila[] = {String.valueOf(obj.getIdProducto()),
+                                  obj.getNombre(), 
+                                  obj.getDescripcion(), 
+                                  String.valueOf(obj.getPrecio()), 
+                                  String.valueOf(obj.getStock()),  
+                                  obj.getDescripcion(),
+                                  obj.getPresentacion()};
                 modelo.addRow(fila);
             }
         } 
@@ -53,6 +56,13 @@ public class SelecionarProductos extends javax.swing.JFrame{
             throw ex;
         }
     }
+    
+
+    
+    
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,9 +95,8 @@ public class SelecionarProductos extends javax.swing.JFrame{
         txt_buscar = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        img = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tb_lista.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -235,8 +244,11 @@ public class SelecionarProductos extends javax.swing.JFrame{
         });
 
         txt_buscar.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-
-        btn_buscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/icons8_search_16px.png"))); // NOI18N
+        txt_buscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_buscarKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -259,30 +271,21 @@ public class SelecionarProductos extends javax.swing.JFrame{
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar)))
+                    .addComponent(btn_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         jPanel3.setBackground(new java.awt.Color(153, 153, 153));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Imagen", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
-        img.setBackground(new java.awt.Color(255, 204, 255));
-        img.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/Op_Venta.png"))); // NOI18N
-        img.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(img)
-                .addGap(62, 62, 62))
+            .addGap(0, 0, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(img, javax.swing.GroupLayout.DEFAULT_SIZE, 94, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGap(0, 100, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -329,14 +332,24 @@ public class SelecionarProductos extends javax.swing.JFrame{
         this.txt_stock.setText(modelo.getValueAt(fila, 4).toString());
         this.txt_marca.setText(modelo.getValueAt(fila,5).toString());
         this.txt_presentacion.setText(modelo.getValueAt(fila, 6).toString());
-        
         this.idSel = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
+        idEnviar=idSel;
+        System.out.println("idSeleccionado"+idEnviar);
         
     }//GEN-LAST:event_tb_listaMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         // TODO add your handling code here:
+       //this.txt_buscar.addMouseMotionListener(evt);
+        
+        
     }//GEN-LAST:event_btn_agregarActionPerformed
+
+    
+    private void txt_buscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_buscarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_buscarKeyTyped
+
     
     /**
      * @param args the command line arguments
@@ -380,7 +393,6 @@ public class SelecionarProductos extends javax.swing.JFrame{
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_agregar;
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JLabel img;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -17,7 +17,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
      */
     Op_Compras OPcompras;
     //Op_Ventas OPventas;
-    public Operaciones() {
+    public Operaciones() throws Exception {
         initComponents();
         //this.OPventas=new Op_Ventas();
          this.OPcompras=new Op_Compras();

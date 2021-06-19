@@ -7,15 +7,35 @@ public class Producto {
     private String descripcion;
     private float precio;
     private int stock;
-    private String estado;
+    private int estado;
     private String decEst;
     private String imgen;
+    private int idLinea;
     private int idMarca ;
     private String marca;
     private int idPresentacion ;
     private String presentacion;
     private int idEstante;
     private int idUniMedidas;
+    private Float descuento;
+
+    public int getIdLinea() {
+        return idLinea;
+    }
+
+    public void setIdLinea(int idLinea) {
+        this.idLinea = idLinea;
+    }
+
+    
+
+    public Float getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Float descuento) {
+        this.descuento = descuento;
+    }
 
     public String getMarca() {
         return marca;
@@ -90,13 +110,14 @@ public class Producto {
         this.stock = stock;
     }
 
-    public String getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
+
 
     public String getImgen() {
         return imgen;
@@ -133,7 +154,7 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, String estado, String decEst, String imgen, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
+    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -158,9 +179,25 @@ public class Producto {
         this.presentacion = presentacion;
     }
 
-    
+    //Constructor para compra
 
-   
+    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idLinea, int idMarca, int idPresentacion, int idEstante, int idUniMedidas, Float descuento) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.estado = estado;
+        this.decEst = decEst;
+        this.imgen = imgen;
+        this.idLinea = idLinea;
+        this.idMarca = idMarca;
+        this.idPresentacion = idPresentacion;
+        this.idEstante = idEstante;
+        this.idUniMedidas = idUniMedidas;
+        this.descuento = descuento;
+    }
+    
 
     @Override
     public String toString() {

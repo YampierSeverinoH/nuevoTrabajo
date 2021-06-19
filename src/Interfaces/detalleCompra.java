@@ -79,6 +79,23 @@ public class detalleCompra {
         this.idProducto = idProducto;
     }
 
+    public detalleCompra(float descuento, float precio, int cantidad, float subtotal, int idCompra, int idProducto) {
+        this.descuento = descuento;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+        this.idCompra = idCompra;
+        this.idProducto = idProducto;
+    }
+
+    public detalleCompra(float descuento, float precio, int cantidad, float subtotal, int idProducto) {
+        this.descuento = descuento;
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.subtotal = subtotal;
+        this.idProducto = idProducto;
+    }
+
     @Override
     public String toString() {
         return "detalleCompra{" + "idDetCompra=" + idDetCompra + ", descuento=" + descuento + ", precio=" + precio + ", cantidad=" + cantidad + ", subtotal=" + subtotal + ", idCompra=" + idCompra + ", idProducto=" + idProducto + '}';
