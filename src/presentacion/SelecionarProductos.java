@@ -22,17 +22,18 @@ import javax.swing.table.DefaultTableModel;
  * @author yam_g
  */
 public class SelecionarProductos extends javax.swing.JFrame{
- public static int idEnviar;
+    public static int idEnviar;
     public int idSel=-1;
     public boolean opc;
     DefaultTableModel modelo;
     String cabecera[] = {"id","NOMBRE", "DESCRIPCION", "PRECIO", "STOCK","MARCA","PRESENTACION" } ;
-    
+ 
     
     public SelecionarProductos() throws Exception {
         initComponents();
         modelo = new DefaultTableModel(null, cabecera );
         this.tb_lista.setModel(modelo);
+               
         listarProductos();
         
     }
@@ -117,7 +118,7 @@ public class SelecionarProductos extends javax.swing.JFrame{
         jScrollPane1.setViewportView(tb_lista);
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Producto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         jLabel1.setText("Nombre:");
 
@@ -196,7 +197,7 @@ public class SelecionarProductos extends javax.swing.JFrame{
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(txt_marca, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 66, Short.MAX_VALUE))))
+                                .addGap(0, 67, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -334,13 +335,13 @@ public class SelecionarProductos extends javax.swing.JFrame{
         this.txt_presentacion.setText(modelo.getValueAt(fila, 6).toString());
         this.idSel = Integer.parseInt(modelo.getValueAt(fila, 0).toString());
         idEnviar=idSel;
-        System.out.println("idSeleccionado"+idEnviar);
+       
         
     }//GEN-LAST:event_tb_listaMouseClicked
 
     private void btn_agregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_agregarActionPerformed
         // TODO add your handling code here:
-       //this.txt_buscar.addMouseMotionListener(evt);
+       
         
         
     }//GEN-LAST:event_btn_agregarActionPerformed
@@ -407,7 +408,7 @@ public class SelecionarProductos extends javax.swing.JFrame{
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tb_lista;
     private javax.swing.JTextField txt_buscar;
-    private javax.swing.JTextField txt_cantidad;
+    public javax.swing.JTextField txt_cantidad;
     private javax.swing.JTextArea txt_descripcion;
     private javax.swing.JTextField txt_marca;
     private javax.swing.JTextField txt_nombre;

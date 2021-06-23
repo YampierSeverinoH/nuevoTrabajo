@@ -5,6 +5,7 @@
  */
 package presentacion;
 
+import Datos.ProductosDAO;
 import Datos.sp_CompraSocioDAO;
 import Datos.sp_CompraTrabDAO;
 import Interfaces.Producto;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import static presentacion.SelecionarProductos.idEnviar;
 
@@ -26,24 +28,54 @@ import static presentacion.SelecionarProductos.idEnviar;
  *
  * @author yampier
  */
-public class Op_Compras extends javax.swing.JFrame{
+public class Op_Compras extends javax.swing.JFrame {
+
     DefaultTableModel DetCompra;
-    String cabecera[] = {"IDPRODUCTO","DESCUENTO", "PRECIO", "CANTIDAD", "SUBTOTAL" } ;
+    String cabecera[] = {"IDPRODUCTO", "DESCUENTO", "PRECIO", "CANTIDAD", "SUBTOTAL"};
     int idSocio = -1;
     int idTrab = -1;
-    public int idRecivido;
+    public int idRecivido=-1;
     SelecionarProductos sp;
     public ArrayList<detalleCompra> listaDetCompra;
-    
+    ActionListener escuchador = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if(idEnviar!=-1 && sp.idEnviar!=0){
+                idRecivido=sp.idEnviar;
+                ProductosDAO obj=new ProductosDAO();
+                Producto p;
+                try {
+                    p=obj.ProductoSeleccion(idRecivido);
+                    if(p!=null && sp.txt_cantidad.getText().length()!=0){
+                        int cantidad=Integer.valueOf(sp.txt_cantidad.getText());
+                        InsertarListaDetCompra(p,cantidad);
+                        sp.idEnviar=-1;
+                    }else{
+                        JOptionPane.showMessageDialog(rootPane, "Error al Seleccionar producto");
+                return;
+                    }
+                    //producto
+                } catch (Exception ex) {
+                    Logger.getLogger(Op_Compras.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                System.out.println("El id es :"+idRecivido);
+            }
+           
+
+        }
+    };
+
     public Op_Compras() throws Exception {
-        sp =new SelecionarProductos();
-         idRecivido=sp.idEnviar;
-         System.out.println("opconprea"+idRecivido);
+        sp = new SelecionarProductos();
+        idRecivido = sp.idEnviar;
+        System.out.println("opconprea" + idRecivido);
         initComponents();
         setLocationRelativeTo(null);
-        DetCompra = new DefaultTableModel(null, cabecera );
+        DetCompra = new DefaultTableModel(null, cabecera);
         this.tabla_Productos.setModel(DetCompra);
-        
+        listaDetCompra=new ArrayList();
+
     }
 
     void buscarSocio(String nombre) throws Exception {
@@ -85,31 +117,41 @@ public class Op_Compras extends javax.swing.JFrame{
             throw ex;
         }
     }
-    private void ListarDetCompra(){
+
+    private void ListarDetCompra() {
         //ArrayList<detalleCompra> tbdetcompra=listaDetCompra;
         if (!listaDetCompra.isEmpty()) {
-            try{
-            for ( detalleCompra obj : listaDetCompra ){
-                String fila[] = {String.valueOf(obj.getIdProducto()),
+            try {
+                for (detalleCompra obj : listaDetCompra) {
+                    String fila[] = {String.valueOf(obj.getIdProducto()),
                         String.valueOf(obj.getDescuento()),
                         String.valueOf(obj.getPrecio()),
-                String.valueOf(obj.getSubtotal())};
-                DetCompra.addRow(fila);
+                        String.valueOf(obj.getCantidad()),
+                        String.valueOf(obj.getSubtotal())};
+                    DetCompra.addRow(fila);
+                }
+            } catch (Exception ex) {
+                throw ex;
             }
-        } 
-        catch (Exception ex) {
-            throw ex;
-        }
         }
     }
-        public  void InsertarListaDetCompra(Producto p, int cantidad){
-        if(p.getNombre().length()!=0 && cantidad!=0){
-            detalleCompra dt=new detalleCompra(p.getDescuento(),p.getPrecio(), cantidad,(p.getPrecio()*cantidad), p.getIdProducto());
+
+    public void InsertarListaDetCompra(Producto p, int cantidad) {
+        if (p.getNombre().length() != 0 && cantidad != 0) {
+            detalleCompra dt = new detalleCompra(p.getDescuento(), p.getPrecio(), cantidad, (p.getPrecio() * cantidad), p.getIdProducto());
             listaDetCompra.add(dt);
+            limpiarTabla(tabla_Productos);
             ListarDetCompra();
         }
-        
-        
+
+    }
+private void limpiarTabla(JTable tab) {
+        DefaultTableModel tb = (DefaultTableModel) tab.getModel();
+        int a = tab.getRowCount() - 1;
+        for (int i = a; i >= 0; i--) {
+            tb.removeRow(tb.getRowCount() - 1);
+
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -524,17 +566,16 @@ public class Op_Compras extends javax.swing.JFrame{
 
     private void btn_buscarSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarSActionPerformed
         // TODO add your handling code here:
-        try{
-            
-            if ( this.txt_buscar.getText().length() == 0){
+        try {
+
+            if (this.txt_buscar.getText().length() == 0) {
                 JOptionPane.showMessageDialog(rootPane, "Documento de SOCIO no encontrado");
                 this.txt_buscar.setText("");
                 return;
             }
-            
+
             buscarSocio(this.txt_buscar.getText());
-        } 
-        catch (Exception ex) {
+        } catch (Exception ex) {
             try {
                 throw ex;
             } catch (Exception ex1) {
@@ -550,19 +591,20 @@ public class Op_Compras extends javax.swing.JFrame{
 
     private void btn_AgregarProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AgregarProdActionPerformed
         // TODO add your handling code here:
-        
+
         try {
             sp = new SelecionarProductos();
+            sp.btn_agregar.addActionListener(escuchador);
         } catch (Exception ex) {
             Logger.getLogger(Op_Compras.class.getName()).log(Level.SEVERE, null, ex);
         }
         sp.setVisible(true);
-        
+
     }//GEN-LAST:event_btn_AgregarProdActionPerformed
 
     private void btn_procesarcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procesarcActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btn_procesarcActionPerformed
 
     /**
