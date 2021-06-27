@@ -13,7 +13,7 @@ public class ClsPresentacion {
     public void setIdPresentacion(int idPresentacion) {
         this.idPresentacion = idPresentacion;
     }
-
+//modificado 2.2
     public String getDescPres() {
         return descPres;
     }
