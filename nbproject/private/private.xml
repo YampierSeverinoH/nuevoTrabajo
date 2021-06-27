@@ -3,19 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/UsuarioDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/SucursalDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/AlmacenDao.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/personaDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Interfaces/detalleCompra.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/TrabajadorDao.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/DetalleCompraDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/TipoTrabajadorDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/presentacion/Op_Compras.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/CompraDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/presentacion/SelecionarProductos.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/ProductosDAO.java</file>
-            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Datos/ClienteDAO.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Interfaces/Producto.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/presentacion/Consultas.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/Interfaces/ClsPrestatario.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/presentacion/CS_Ventas.java</file>
+            <file>file:/C:/Users/Usuario/Desktop/8°%20CICLO/DESARROLLO%20DE%20APLICACIONES/clase%20%20(8)/avance%2010-06/NegocioYameli/src/presentacion/Configuracion.java</file>
         </group>
     </open-files>
 </project-private>
