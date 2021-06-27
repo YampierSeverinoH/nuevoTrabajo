@@ -15,9 +15,8 @@ public class Procesos extends javax.swing.JInternalFrame {
      * Creates new form Procesos
      */
     PRO_Almacen PROalmancen;
-    PRO_Areas PROareas;
     PRO_Clientes PROclientes;
-    PRO_Persona PROpersona;
+   
     PRO_Productos PROproductos;
     PRO_Socio PROsocio;
     PRO_Trabajador PROtrabajador;
@@ -27,9 +26,9 @@ public class Procesos extends javax.swing.JInternalFrame {
         initComponents();
         this.setLocation(200, 50);
         PROalmancen = new PRO_Almacen();
-        PROareas = new PRO_Areas();
+       
         PROclientes = new PRO_Clientes();
-        PROpersona = new PRO_Persona();
+       
         PROproductos = new PRO_Productos();
         PROsocio = new PRO_Socio();
         PROtrabajador = new PRO_Trabajador();

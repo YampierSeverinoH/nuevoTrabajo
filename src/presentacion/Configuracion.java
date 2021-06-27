@@ -16,16 +16,14 @@ public class Configuracion extends javax.swing.JInternalFrame {
      */
     CONF_Contactos CONFcontastos;
     CONF_Empresa CONFempresa;
-    CONF_GenerarBack CONFgenerarBack;
-    CONF_Tienda CONFmigrar;
+    CONF_Politicas CONFmigrar;
 
     public Configuracion() {
         initComponents();
         this.setLocation(200, 50);
         CONFcontastos = new CONF_Contactos();
         CONFempresa = new CONF_Empresa();
-        CONFgenerarBack = new CONF_GenerarBack();
-        CONFmigrar = new CONF_Tienda();
+        CONFmigrar = new CONF_Politicas();
     }
 
     /**

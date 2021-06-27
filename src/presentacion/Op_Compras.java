@@ -604,7 +604,7 @@ private void limpiarTabla(JTable tab) {
 
     private void btn_procesarcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_procesarcActionPerformed
         // TODO add your handling code here:
-
+        
     }//GEN-LAST:event_btn_procesarcActionPerformed
 
     /**
