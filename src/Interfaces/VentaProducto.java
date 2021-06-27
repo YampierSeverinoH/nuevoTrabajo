@@ -10,14 +10,14 @@ package Interfaces;
  * @author yam_g
  */
 public class VentaProducto {
-    private Producto p;
+    private ClsProducto p;
     private  int cantidad;
 
-    public Producto getP() {
+    public ClsProducto getP() {
         return p;
     }
 
-    public void setP(Producto p) {
+    public void setP(ClsProducto p) {
         this.p = p;
     }
 
@@ -25,7 +25,7 @@ public class VentaProducto {
         return cantidad;
     }
 
-    public VentaProducto(Producto p, int cantidad) {
+    public VentaProducto(ClsProducto p, int cantidad) {
         this.p = p;
         this.cantidad = cantidad;
     }

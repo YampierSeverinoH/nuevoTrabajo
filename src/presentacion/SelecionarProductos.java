@@ -48,7 +48,7 @@ public class SelecionarProductos extends javax.swing.JFrame{
                                   obj.getDescripcion(), 
                                   String.valueOf(obj.getPrecio()), 
                                   String.valueOf(obj.getStock()),  
-                                  obj.getDescripcion(),
+                                  String.valueOf(obj.getIdMarca()),
                                   obj.getPresentacion()};
                 modelo.addRow(fila);
             }

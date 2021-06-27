@@ -1,12 +1,12 @@
-
 package Interfaces;
 
 public class ClsCliente {
-     private int idCliente;
-     private int idPrestatario;
-     private int idPersona;
-     private int estado;
-     private String fecha;
+
+    private int idCliente;
+    private int idPrestatario;
+    private int idPersona;
+    private int estado;
+    private String fecha;
 
     public int getIdCliente() {
         return idCliente;
@@ -58,8 +58,9 @@ public class ClsCliente {
         this.estado = estado;
         this.fecha = fecha;
     }
-        public ClsCliente(int idPrestatario, int idPersona, int estado, String fecha) {
-               this.idPrestatario = idPrestatario;
+
+    public ClsCliente(int idPrestatario, int idPersona, int estado, String fecha) {
+        this.idPrestatario = idPrestatario;
         this.idPersona = idPersona;
         this.estado = estado;
         this.fecha = fecha;
@@ -69,7 +70,5 @@ public class ClsCliente {
     public String toString() {
         return "Cliente{" + "idCliente=" + idCliente + ", idPrestatario=" + idPrestatario + ", idPersona=" + idPersona + ", estado=" + estado + ", fecha=" + fecha + '}';
     }
-     
-     
-    
+
 }

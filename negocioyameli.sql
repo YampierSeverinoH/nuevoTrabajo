@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-06-2021 a las 02:25:07
+-- Tiempo de generación: 27-06-2021 a las 06:04:04
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.2.33
 
@@ -80,6 +80,26 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_EliminarAlmacen` (IN `Ridalmacen
 	DELETE FROM almacen WHERE almacen.idAlmacen = Ridalmacen;
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaEstante` ()  BEGIN
+	SELECT * FROM estante;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaLinia` ()  BEGIN
+	SELECT * FROM linea;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaMarca` ()  BEGIN
+	SELECT * FROM marca;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaPresentacion` ()  BEGIN
+	SELECT * FROM presentacion;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaProductos` ()  BEGIN
+	SELECT * FROM producto;
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListarAlmacen` ()  BEGIN
 	SELECT * FROM almacen;
 END$$
@@ -98,6 +118,14 @@ END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListarTrabajador` ()  BEGIN
 	SELECT * FROM trabajador;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaUnidad` ()  BEGIN
+	SELECT * FROM unimedida;
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ListaUsuario` ()  BEGIN
+	SELECT * FROM usuario;
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ModificarAlmacen` (IN `RidAlmacen` INT, IN `Rdescripcion` VARCHAR(20), IN `Rcodigo` VARCHAR(20), IN `Rtelefono` CHAR(9), IN `Restado` BIT, IN `RdesEstado` VARCHAR(20), IN `Rtrabajador` INT, IN `Rsucursal` INT)  BEGIN
@@ -128,6 +156,24 @@ INSERT INTO cliente (idPrestatario, idPersona, estado, fecha)
 VALUES (idPrestatario, idPersona, estado, fecha);
 END$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarCompra` (IN `REGfecha` DATETIME, IN `REGtotalC` FLOAT, IN `REGestado` BIT, IN `REGidSocio` INT, IN `REGidTrabajador` INT)  BEGIN
+INSERT INTO compra(idCompra,fecha,totalC,estado,idSocio,idTrabajador) 
+VALUES(null,REGfecha ,REGtotalC ,REGestado ,REGidSocio ,REGidTrabajador );
+    SELECT @@IDENTITY AS 'Identity';
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarDetalleCompra` (IN `REGdescuento` FLOAT, IN `REGprecio` FLOAT, IN `REGcantidad` INT, IN `REGsubtotal` FLOAT, IN `REGidCompra` INT, IN `REGidProducto` INT)  BEGIN
+INSERT INTO compra(idDetCompra,descuento,precio,cantidad,subtotal,idCompra,idProducto) 
+VALUES(null,REGdescuento, REGprecio,REGcantidad ,REGsubtotal , REGidCompra,REGidProducto);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarProducto` (IN `nombre` VARCHAR(40), IN `descripcion` VARCHAR(200), IN `precio` FLOAT, IN `stock` INT(11), IN `estado` INT(11), IN `decEst` VARCHAR(20), IN `imgen` VARCHAR(100), IN `idLinea` INT(11), IN `idMarca` INT(11), IN `idPresentacion` INT(11), IN `idEstante` INT(11), IN `idUniMedidas` INT(11))  BEGIN
+INSERT INTO producto (idProducto, nombre, descripcion, precio, stock, estado, decEst, 
+imgen, idLinea, idMarca, idPresentacion, idEstante, idUniMedidas )
+VALUES (null, nombre, descripcion, precio, stock, estado, decEst, 
+imgen, idLinea, idMarca, idPresentacion, idEstante, idUniMedidas );
+END$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarTelefono` (IN `numero` VARCHAR(9), IN `principal` BIT, IN `estado` BIT, IN `idpersona` INT)  BEGIN
 	insert into telefono (numero,Principal,estado,idPersona)
     values(numero,principal,estado, idpersona);
@@ -136,6 +182,13 @@ END$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarTrabajador` (IN `sueldo` FLOAT, IN `idPersona` INT(11), IN `idSucursal` INT(11))  BEGIN
 INSERT INTO trabajador (idTrabajador, sueldo, idPersona, idSucursal)
 VALUES (null , sueldo, idPersona, idSucursal);
+END$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_registrarUsuario` (IN `descripcion` VARCHAR(20), IN `pass` VARCHAR(20), IN `estado` INT(11), IN `decEst` VARCHAR(20), IN `creacion` DATE, IN `baja` DATE, IN `idPersona` INT(11), IN `imagen` VARCHAR(200))  BEGIN
+INSERT INTO usuario (idUsuario, descripcion, pass, estado, decEst, creacion, baja, 
+idPersona, imagen)
+VALUES (null, descripcion, pass, estado, decEst, creacion, baja, 
+idPersona, imagen );
 END$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sp_ValidacionUsuario` (`contra` VARCHAR(20), `usuario` VARCHAR(20))  BEGIN
@@ -275,6 +328,14 @@ CREATE TABLE `compra` (
   `idSocio` int(11) NOT NULL,
   `idTrabajador` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `compra`
+--
+
+INSERT INTO `compra` (`idCompra`, `fecha`, `totalC`, `estado`, `idSocio`, `idTrabajador`) VALUES
+(1, '2021-06-08 23:57:55', 30, 'a', 1, 1),
+(2, '2021-06-08 00:00:00', 30, 'a', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -1036,7 +1097,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
-  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idCompra` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `detallecompra`

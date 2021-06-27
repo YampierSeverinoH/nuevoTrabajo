@@ -1,8 +1,8 @@
-
 package Interfaces;
 
 public class Producto {
-    private int idProducto;
+
+   private int idProducto;
     private String nombre;
     private String descripcion;
     private float precio;
@@ -18,57 +18,6 @@ public class Producto {
     private int idEstante;
     private int idUniMedidas;
     private Float descuento;
-
-    public int getIdLinea() {
-        return idLinea;
-    }
-
-    public void setIdLinea(int idLinea) {
-        this.idLinea = idLinea;
-    }
-
-    
-
-    public Float getDescuento() {
-        return descuento;
-    }
-
-    public void setDescuento(Float descuento) {
-        this.descuento = descuento;
-    }
-
-    public String getMarca() {
-        return marca;
-    }
-
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
-
-    public String getPresentacion() {
-        return presentacion;
-    }
-
-    public void setPresentacion(String presentacion) {
-        this.presentacion = presentacion;
-    }
-    
-    public String getDecEst() {
-        return decEst;
-    }
-
-    public void setDecEst(String decEst) {
-        this.decEst = decEst;
-    }
-
-    public int getIdUniMedidas() {
-        return idUniMedidas;
-    }
-
-    public void setIdUniMedidas(int idUniMedidas) {
-        this.idUniMedidas = idUniMedidas;
-    }
- 
 
     public int getIdProducto() {
         return idProducto;
@@ -118,6 +67,13 @@ public class Producto {
         this.estado = estado;
     }
 
+    public String getDecEst() {
+        return decEst;
+    }
+
+    public void setDecEst(String decEst) {
+        this.decEst = decEst;
+    }
 
     public String getImgen() {
         return imgen;
@@ -125,6 +81,14 @@ public class Producto {
 
     public void setImgen(String imgen) {
         this.imgen = imgen;
+    }
+
+    public int getIdLinea() {
+        return idLinea;
+    }
+
+    public void setIdLinea(int idLinea) {
+        this.idLinea = idLinea;
     }
 
     public int getIdMarca() {
@@ -135,12 +99,28 @@ public class Producto {
         this.idMarca = idMarca;
     }
 
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
     public int getIdPresentacion() {
         return idPresentacion;
     }
 
     public void setIdPresentacion(int idPresentacion) {
         this.idPresentacion = idPresentacion;
+    }
+
+    public String getPresentacion() {
+        return presentacion;
+    }
+
+    public void setPresentacion(String presentacion) {
+        this.presentacion = presentacion;
     }
 
     public int getIdEstante() {
@@ -151,10 +131,61 @@ public class Producto {
         this.idEstante = idEstante;
     }
 
+    public int getIdUniMedidas() {
+        return idUniMedidas;
+    }
+
+    public void setIdUniMedidas(int idUniMedidas) {
+        this.idUniMedidas = idUniMedidas;
+    }
+
+    public Float getDescuento() {
+        return descuento;
+    }
+
+    public void setDescuento(Float descuento) {
+        this.descuento = descuento;
+    }
+
     public Producto() {
     }
 
-    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
+
+
+    
+
+    public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idLinea, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.estado = estado;
+        this.decEst = decEst;
+        this.imgen = imgen;
+        this.idLinea = idLinea;
+        this.idMarca = idMarca;
+        this.idPresentacion = idPresentacion;
+        this.idEstante = idEstante;
+        this.idUniMedidas = idUniMedidas;
+    }
+
+    public Producto(String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idLinea, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precio = precio;
+        this.stock = stock;
+        this.estado = estado;
+        this.decEst = decEst;
+        this.imgen = imgen;
+        this.idLinea = idLinea;
+        this.idMarca = idMarca;
+        this.idPresentacion = idPresentacion;
+        this.idEstante = idEstante;
+        this.idUniMedidas = idUniMedidas;
+        
+    }
+public Producto(int idProducto, String nombre, String descripcion, float precio, int stock, int estado, String decEst, String imgen, int idMarca, int idPresentacion, int idEstante, int idUniMedidas) {
         this.idProducto = idProducto;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -205,5 +236,8 @@ public class Producto {
     }
     
     
+
+    
+
     
 }
