@@ -5,11 +5,14 @@
  */
 package presentacion;
 
+import Datos.UsuarioDAO;
+import Interfaces.Usuario;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 //import rsscalelabel.RSScaleLabel;
 
@@ -22,11 +25,18 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    Principal pri;
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        try {
+            pri = new Principal();
 //         RSScaleLabel.setScaleLabel(this.jLabel1, "src/presentacion/img/fondo.png");
 //         RSScaleLabel.setScaleLabel(this.jLabel2, "src/presentacion/img/user.png");
+        } catch (Exception ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -38,8 +48,8 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtUser = new javax.swing.JTextField();
+        txtContra = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
@@ -89,8 +99,8 @@ public class Login extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jCheckBox1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextField1)
-                                .addComponent(jPasswordField1)
+                                .addComponent(txtUser)
+                                .addComponent(txtContra)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(74, Short.MAX_VALUE))
         );
@@ -101,13 +111,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jLabel3)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(2, 2, 2)))
                 .addGap(18, 18, 18)
                 .addComponent(jCheckBox1)
@@ -121,14 +131,40 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Principal pri = null;
+        String pros=new String(txtContra.getPassword());
         try {
-            pri = new Principal();
+            if (this.txtUser.getText().length() == 0) {
+                JOptionPane.showMessageDialog(rootPane, "No ingreso usuario");
+                return;
+            } else if (pros.length()== 0) {
+                JOptionPane.showMessageDialog(rootPane, "No ingreso Contraseña");
+                return;
+            } else {
+                Usuario us;
+                UsuarioDAO objDAO = new UsuarioDAO();
+                us = objDAO.buscarcliente(txtUser.getText(), pros);
+                
+                if(us.getIdUsuario()!=0){
+                    JOptionPane.showMessageDialog(rootPane, "Ingreso como:\nUsuario:"
+                        +us.getDescripcion()+"\nPersona: "+us.getPersona()+"\nIdUsuario: "+us.getIdUsuario());
+                   pri.setVisible(true); 
+                }else{
+                     JOptionPane.showMessageDialog(rootPane, "Usuario no Encontrado");
+                        return;
+                }
+
+            }
+            // modelo.setRowCount(0);
+            // this.buscarCurso(this.txtBuscar.getText());
         } catch (Exception ex) {
-            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            try {
+                throw ex;
+            } catch (Exception ex1) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex1);
+            }
         }
-        pri.setVisible(true);
-        this.dispose();
+
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -172,8 +208,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txtContra;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 
 }

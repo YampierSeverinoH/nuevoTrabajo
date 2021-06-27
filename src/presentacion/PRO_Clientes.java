@@ -141,6 +141,11 @@ public class PRO_Clientes extends javax.swing.JFrame {
         btnEditar.setText("Editar");
         btnEditar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnEditar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditarActionPerformed(evt);
+            }
+        });
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/icons8_cancel_48px.png"))); // NOI18N
         btnNuevo.setText("Eliminar");
@@ -337,7 +342,7 @@ public class PRO_Clientes extends javax.swing.JFrame {
                     this.txtfecha.getText());
 
             objDAO.agregarCliente(cli);
-            JOptionPane.showMessageDialog(rootPane, "Cliente agregado");
+            JOptionPane.showMessageDialog(rootPane, "CLIENTE AGREGADO");
             
 //            cargarClientes();
             
@@ -394,6 +399,12 @@ public class PRO_Clientes extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnbuscarActionPerformed
+
+    private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEditarActionPerformed
 
     /**
      * @param args the command line arguments

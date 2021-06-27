@@ -7,7 +7,7 @@ public class ClsPrestatario {
     private String DescDir;
     private String ruc;
     private boolean estadoPs;
-
+// se modifico el cambioo a todo el codigo xd
     public int getIdPrestatario() {
         return idPrestatario;
     }
@@ -51,7 +51,7 @@ public class ClsPrestatario {
 
     public ClsPrestatario() {
     }
-
+//este es nuevo pe por favor 
     public ClsPrestatario(int idPrestatario,String razonSocial, String DescDir, String ruc, boolean estadoPs) {
         this.idPrestatario = idPrestatario;
         this.razonSocial = razonSocial;

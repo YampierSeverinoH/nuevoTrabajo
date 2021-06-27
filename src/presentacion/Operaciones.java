@@ -16,10 +16,10 @@ public class Operaciones extends javax.swing.JInternalFrame {
      * Creates new form Operaciones
      */
     Op_Compras OPcompras;
-    Op_Ventas OPventas;
-    public Operaciones() {
+    //Op_Ventas OPventas;
+    public Operaciones() throws Exception {
         initComponents();
-        this.OPventas=new Op_Ventas();
+        //this.OPventas=new Op_Ventas();
          this.OPcompras=new Op_Compras();
     }
 
@@ -44,15 +44,15 @@ public class Operaciones extends javax.swing.JInternalFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione Operación:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("DejaVu Sans", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Selecione Operación:", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("sansserif", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
         jPanel1.setAlignmentX(this.getWidth()/2);
         jPanel1.setAlignmentY(this.getHeight()/2);
 
-        jPanel2.setBackground(null);
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(""), "Ventas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         btn_Ventas.setBackground(new java.awt.Color(102, 255, 102));
         btn_Ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/Op_Venta.png"))); // NOI18N
+        btn_Ventas.setEnabled(false);
         btn_Ventas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btn_Ventas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,7 +73,6 @@ public class Operaciones extends javax.swing.JInternalFrame {
             .addComponent(btn_Ventas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jPanel3.setBackground(null);
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Compras", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION));
 
         btn_Compras.setBackground(new java.awt.Color(102, 255, 102));
@@ -135,7 +134,7 @@ public class Operaciones extends javax.swing.JInternalFrame {
     private void btn_VentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_VentasActionPerformed
         // TODO add your handling code here:
         
-        OPventas.setVisible(true);
+        //OPventas.setVisible(true);
         
     }//GEN-LAST:event_btn_VentasActionPerformed
 

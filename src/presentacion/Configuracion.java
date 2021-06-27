@@ -16,16 +16,14 @@ public class Configuracion extends javax.swing.JInternalFrame {
      */
     CONF_Contactos CONFcontastos;
     CONF_Empresa CONFempresa;
-    CONF_GenerarBack CONFgenerarBack;
-    CONF_Tienda CONFmigrar;
+    CONF_Politicas CONFmigrar;
 
     public Configuracion() {
         initComponents();
         this.setLocation(200, 50);
         CONFcontastos = new CONF_Contactos();
         CONFempresa = new CONF_Empresa();
-        CONFgenerarBack = new CONF_GenerarBack();
-        CONFmigrar = new CONF_Tienda();
+        CONFmigrar = new CONF_Politicas();
     }
 
     /**
@@ -40,8 +38,6 @@ public class Configuracion extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         btn_CONFempresa = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        btn_CONFgenerarB = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btn_CONFmigrar = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -68,20 +64,6 @@ public class Configuracion extends javax.swing.JInternalFrame {
         jPanel3.add(btn_CONFempresa, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel3);
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Generar .bak"));
-        jPanel2.setPreferredSize(new java.awt.Dimension(120, 130));
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        btn_CONFgenerarB.setBackground(new java.awt.Color(102, 255, 102));
-        btn_CONFgenerarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CONFgenerarBActionPerformed(evt);
-            }
-        });
-        jPanel2.add(btn_CONFgenerarB, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel2);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Tienda"));
         jPanel4.setPreferredSize(new java.awt.Dimension(120, 130));
@@ -111,7 +93,7 @@ public class Configuracion extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel5);
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 110, 340, 310));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 110, 420, 200));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/fondo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1284, 567));
@@ -129,11 +111,6 @@ public class Configuracion extends javax.swing.JInternalFrame {
         this.CONFmigrar.setVisible(true);
     }//GEN-LAST:event_btn_CONFmigrarActionPerformed
 
-    private void btn_CONFgenerarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CONFgenerarBActionPerformed
-        // TODO add your handling code here:
-        this.CONFgenerarBack.setVisible(true);
-    }//GEN-LAST:event_btn_CONFgenerarBActionPerformed
-
     private void btn_CONFcontactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CONFcontactosActionPerformed
         // TODO add your handling code here:
         this.CONFcontastos.setVisible(true);
@@ -143,11 +120,9 @@ public class Configuracion extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_CONFcontactos;
     private javax.swing.JButton btn_CONFempresa;
-    private javax.swing.JButton btn_CONFgenerarB;
     private javax.swing.JButton btn_CONFmigrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;

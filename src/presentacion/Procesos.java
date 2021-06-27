@@ -15,9 +15,8 @@ public class Procesos extends javax.swing.JInternalFrame {
      * Creates new form Procesos
      */
     PRO_Almacen PROalmancen;
-    PRO_Areas PROareas;
     PRO_Clientes PROclientes;
-    PRO_Persona PROpersona;
+   
     PRO_Productos PROproductos;
     PRO_Socio PROsocio;
     PRO_Trabajador PROtrabajador;
@@ -27,9 +26,9 @@ public class Procesos extends javax.swing.JInternalFrame {
         initComponents();
         this.setLocation(200, 50);
         PROalmancen = new PRO_Almacen();
-        PROareas = new PRO_Areas();
+       
         PROclientes = new PRO_Clientes();
-        PROpersona = new PRO_Persona();
+       
         PROproductos = new PRO_Productos();
         PROsocio = new PRO_Socio();
         PROtrabajador = new PRO_Trabajador();
@@ -46,8 +45,6 @@ public class Procesos extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        btn_RgPersona = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         btn_RgClientes = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
@@ -56,12 +53,10 @@ public class Procesos extends javax.swing.JInternalFrame {
         btn_RgProductos = new javax.swing.JButton();
         jPanel9 = new javax.swing.JPanel();
         btn_RgTrabajador = new javax.swing.JButton();
-        jPanel7 = new javax.swing.JPanel();
-        btn_RgAlmacen = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         btn_RgUsuarios = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        btn_RgAreas = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        btn_RgAlmacen = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setTitle("REGISTRAR");
@@ -70,20 +65,6 @@ public class Procesos extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Seleccione Opción:"));
         jPanel1.setToolTipText("");
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Persona"));
-        jPanel5.setPreferredSize(new java.awt.Dimension(120, 130));
-        jPanel5.setLayout(new java.awt.BorderLayout());
-
-        btn_RgPersona.setBackground(new java.awt.Color(102, 255, 102));
-        btn_RgPersona.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RgPersonaActionPerformed(evt);
-            }
-        });
-        jPanel5.add(btn_RgPersona, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel5);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Clientes"));
         jPanel4.setToolTipText("");
@@ -142,6 +123,20 @@ public class Procesos extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel9);
 
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuarios"));
+        jPanel6.setPreferredSize(new java.awt.Dimension(120, 130));
+        jPanel6.setLayout(new java.awt.BorderLayout());
+
+        btn_RgUsuarios.setBackground(new java.awt.Color(102, 255, 102));
+        btn_RgUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_RgUsuariosActionPerformed(evt);
+            }
+        });
+        jPanel6.add(btn_RgUsuarios, java.awt.BorderLayout.CENTER);
+
+        jPanel1.add(jPanel6);
+
         jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Almacen"));
         jPanel7.setToolTipText("");
         jPanel7.setPreferredSize(new java.awt.Dimension(120, 130));
@@ -157,46 +152,13 @@ public class Procesos extends javax.swing.JInternalFrame {
 
         jPanel1.add(jPanel7);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuarios"));
-        jPanel6.setPreferredSize(new java.awt.Dimension(120, 130));
-        jPanel6.setLayout(new java.awt.BorderLayout());
-
-        btn_RgUsuarios.setBackground(new java.awt.Color(102, 255, 102));
-        btn_RgUsuarios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RgUsuariosActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btn_RgUsuarios, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel6);
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("Areas"));
-        jPanel8.setPreferredSize(new java.awt.Dimension(120, 130));
-        jPanel8.setLayout(new java.awt.BorderLayout());
-
-        btn_RgAreas.setBackground(new java.awt.Color(102, 255, 102));
-        btn_RgAreas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RgAreasActionPerformed(evt);
-            }
-        });
-        jPanel8.add(btn_RgAreas, java.awt.BorderLayout.CENTER);
-
-        jPanel1.add(jPanel8);
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 540, 330));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 90, 470, 330));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/presentacion/img/fondo.png"))); // NOI18N
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1284, 567));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_RgPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RgPersonaActionPerformed
-        // TODO add your handling code here:
-        this.PROpersona.setVisible(true);
-    }//GEN-LAST:event_btn_RgPersonaActionPerformed
 
     private void btn_RgClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RgClientesActionPerformed
         // TODO add your handling code here:
@@ -228,17 +190,10 @@ public class Procesos extends javax.swing.JInternalFrame {
         this.PROusuarios.setVisible(true);
     }//GEN-LAST:event_btn_RgUsuariosActionPerformed
 
-    private void btn_RgAreasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RgAreasActionPerformed
-        // TODO add your handling code here:
-        this.PROareas.setVisible(true);
-    }//GEN-LAST:event_btn_RgAreasActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_RgAlmacen;
-    private javax.swing.JButton btn_RgAreas;
     private javax.swing.JButton btn_RgClientes;
-    private javax.swing.JButton btn_RgPersona;
     private javax.swing.JButton btn_RgProductos;
     private javax.swing.JButton btn_RgSocio;
     private javax.swing.JButton btn_RgTrabajador;
@@ -248,10 +203,8 @@ public class Procesos extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,17 +1,11 @@
 package presentacion;
 
-import Datos.ClienteDAO;
 import Datos.SucursalDAO;
 import Datos.TrabajadorDao;
-import Datos.areaTDAO;
 import Datos.personaDAO;
-import Interfaces.ClsAreaT;
-import Interfaces.ClsCliente;
 import Interfaces.ClsPersona;
-import Interfaces.ClsPrestatario;
 import Interfaces.ClsSucursal;
 import Interfaces.ClsTrabajador;
-import Interfaces.ClsareaTipoTrabajador;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
