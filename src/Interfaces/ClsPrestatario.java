@@ -7,7 +7,7 @@ public class ClsPrestatario {
     private String DescDir;
     private String ruc;
     private boolean estadoPs;
-
+// se modifico el cambioo a todo el codigo xd
     public int getIdPrestatario() {
         return idPrestatario;
     }
